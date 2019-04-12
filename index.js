@@ -39,7 +39,7 @@ io.on('connection', (socket) =>{
 })
 
 app.set('appName','App de usuarios')
-app.set('appPort',8080)
+const port = process.env.PORT || 8080;
 app.set('view engine','ejs')
 
 app.use(bodyParser.json())
@@ -85,6 +85,6 @@ app.delete('/users/:id',(request,response) => {
 
 app.use(express.static('public'))
 
-server.listen(app.get('appPort'), () => {
+server.listen(port, () => {
     console.log('Server running',app.get('appName'))
 })
